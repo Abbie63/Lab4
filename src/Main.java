@@ -1,11 +1,14 @@
 import Actors.*;
 import Enums.Place;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws PersonHasNotNameException, IOException {
+    public static void main(String[] args) throws PersonHasNotNameException {
         try {
             Mum mum = new Mum("мама");
             Dad dad = new Dad("папа");
@@ -33,8 +36,15 @@ public class Main {
             transformation.transformation();
             mum.callback(Place.TRAVELAGENCY);
             dad.converseToPerson(mum);
-
         } catch (PersonHasNotNameException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        File file = new File("myfile");
+        try {
+            FileInputStream fis = new FileInputStream(file);
+        } catch(FileNotFoundException e){
             System.out.println(e.getMessage());
         }
 }}
